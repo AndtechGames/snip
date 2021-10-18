@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
+		<Version>1.0.1</Version>
+		<Authors>AndtechGames</Authors>
+		<Company>AndtechGames</Company>
+		<StartupObject></StartupObject>
+	</PropertyGroup>
+
+	<!-- NuGet settings -->
+	<PropertyGroup>
+		<Deterministic>true</Deterministic>
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<RepositoryType></RepositoryType>
+		<PackageLicenseExpression></PackageLicenseExpression>
+		<AssemblyName>Snip</AssemblyName>
+		<AssemblyVersion>1.0.1.0</AssemblyVersion>
+		<FileVersion>1.0.1.0</FileVersion>
+		<Product>Snip</Product>
+		<RepositoryUrl>https://github.com/AndtechGames/snip</RepositoryUrl>
+		<RootNamespace>Snip</RootNamespace>
+		<Company>AndtechGames</Company>
+		<Authors>AndtechGames</Authors>
+	</PropertyGroup>
+
+	<!-- Dotnet Tool settings -->
+	<PropertyGroup>
+		<PackAsTool>true</PackAsTool>
+		<PackageId>Andtech.Snip</PackageId>
+		<ToolCommandName>snip</ToolCommandName>
+		<PackageOutputPath>./nupkg</PackageOutputPath>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Description>Simple cut &amp; paste tool</Description>
+		<Copyright>© 2021 AndtechGames</Copyright>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+	</PropertyGroup>
+	<ItemGroup>
+	  <PackageReference Include="CommandLineParser" Version="2.9.0-preview1" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Include="..\..\LICENSE">
+	    <Pack>True</Pack>
+	    <PackagePath></PackagePath>
+	  </None>
+	</ItemGroup>
+
+</Project>
