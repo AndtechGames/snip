@@ -18,7 +18,7 @@ This is like pressing <kbd>Ctrl</kbd> + <kbd>X</kbd> (or <kbd>⌘</kbd> + <kbd>X
 
 ## Paste
 ```
-$ snip [-c|--copy]
+$ snip
 ```
 
 This is like pressing <kbd>Ctrl</kbd> + <kbd>V</kbd> (or <kbd>⌘</kbd> + <kbd>V</kbd>)
