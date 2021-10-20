@@ -3,9 +3,7 @@
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
 		<TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
-		<Version>1.0.1</Version>
-		<Authors>AndtechGames</Authors>
-		<Company>AndtechGames</Company>
+		<Version>1.0.2</Version>
 		<StartupObject></StartupObject>
 	</PropertyGroup>
 
@@ -17,16 +15,16 @@
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-		<RepositoryType></RepositoryType>
+		<RepositoryType>git</RepositoryType>
 		<PackageLicenseExpression></PackageLicenseExpression>
 		<AssemblyName>Snip</AssemblyName>
-		<AssemblyVersion>1.0.1.0</AssemblyVersion>
-		<FileVersion>1.0.1.0</FileVersion>
+		<AssemblyVersion>1.0.2.0</AssemblyVersion>
+		<FileVersion>1.0.2.0</FileVersion>
 		<Product>Snip</Product>
-		<RepositoryUrl>https://github.com/AndtechGames/snip</RepositoryUrl>
+		<RepositoryUrl>https://github.com/andtechstudios/snip</RepositoryUrl>
 		<RootNamespace>Snip</RootNamespace>
-		<Company>AndtechGames</Company>
-		<Authors>AndtechGames</Authors>
+		<Company>Andtech Studios</Company>
+		<Authors>Andtech Studios</Authors>
 	</PropertyGroup>
 
 	<!-- Dotnet Tool settings -->
@@ -36,9 +34,10 @@
 		<ToolCommandName>snip</ToolCommandName>
 		<PackageOutputPath>./nupkg</PackageOutputPath>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Description>Simple cut &amp; paste tool</Description>
-		<Copyright>© 2021 AndtechGames</Copyright>
+		<Description>Simple cut &amp; paste CLI</Description>
+		<Copyright>© 2021 Andtech Studios</Copyright>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageProjectUrl>https://github.com/andtechstudios/snip</PackageProjectUrl>
 	</PropertyGroup>
 	<ItemGroup>
 	  <PackageReference Include="CommandLineParser" Version="2.9.0-preview1" />
