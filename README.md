@@ -1,4 +1,6 @@
 # Snip
+*Simple cut & paste CLI*
+
 Now you can enjoy the ease of cut & paste functionality in the shell. No more needing to remember obnoxiously long `mv` operands.
 
 ```bash
