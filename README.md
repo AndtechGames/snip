@@ -1,8 +1,6 @@
 # Snip
 *Simple cut & paste CLI*
 
-[![NuGet](https://img.shields.io/nuget/vpre/Andtech.Snip)](https://nuget.org/packages/Andtech.Snip)
-
 Now you can enjoy the ease of cut & paste functionality in the shell. No more needing to remember obnoxiously long `mv` operands.
 
 ```bash
