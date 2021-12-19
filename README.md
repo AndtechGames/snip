@@ -1,7 +1,7 @@
 # Snip
 *Simple cut & paste CLI*
 
-[![badge](https://img.shields.io/github/v/tag/andtechstudios/snip?label=nuget)](https://gitlab.com/andtech/pkg/-/packages)
+[![badge](https://img.shields.io/github/v/tag/andtechstudios/snip?label=nuget)](https://gitlab.com/andtech/pkg/-/packages?search[]=snip)
 
 Now you can enjoy the ease of cut & paste functionality in the shell. No more needing to remember obnoxiously long `mv` operands.
 
