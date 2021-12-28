@@ -2,8 +2,8 @@
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
-		<TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
-		<Version>1.0.2</Version>
+		<TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
+		<Version></Version>
 		<StartupObject></StartupObject>
 	</PropertyGroup>
 
@@ -18,8 +18,8 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseExpression></PackageLicenseExpression>
 		<AssemblyName>Snip</AssemblyName>
-		<AssemblyVersion>1.0.2.0</AssemblyVersion>
-		<FileVersion>1.0.2.0</FileVersion>
+		<AssemblyVersion></AssemblyVersion>
+		<FileVersion></FileVersion>
 		<Product>Snip</Product>
 		<RepositoryUrl>https://github.com/andtechstudios/snip</RepositoryUrl>
 		<RootNamespace>Snip</RootNamespace>

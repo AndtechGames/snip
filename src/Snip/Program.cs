@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 
-namespace Andtech
+namespace Andtech.Snip
 {
 
 	public class Options
@@ -15,20 +15,7 @@ namespace Andtech
 
 	class Program
 	{
-		private static readonly string SnipFilePath = Path.Join(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "/.snip");
-		private static string SnipTarget
-		{
-			get
-			{
-				if (File.Exists(SnipFilePath))
-				{
-					return File.ReadAllText(SnipFilePath);
-				}
-
-				return null;
-			}
-			set => File.WriteAllText(SnipFilePath, value);
-		}
+		private static readonly string SnipboardLocation = Path.Join(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "/.snip");
 
 		static void Main(string[] args)
 		{
@@ -41,52 +28,72 @@ namespace Andtech
 		{
 			if (string.IsNullOrEmpty(options.Target))
 			{
-				Paste(clear: !options.Copy);
+				Paste();
 			}
 			else
 			{
-				Cut(options.Target);
+				var operation = options.Copy ? SnipOperation.Copy : SnipOperation.Cut;
+				var snipboard = Cut(options.Target, operation);
 
 				Console.ForegroundColor = ConsoleColor.Green;
-				Console.WriteLine(SnipTarget);
+				switch (snipboard.Operation)
+				{
+					case SnipOperation.Cut:
+						Console.WriteLine($"'{Path.GetFileName(snipboard.TargetPath)}' cut to snipboard");
+						break;
+					case SnipOperation.Copy:
+						Console.WriteLine($"'{Path.GetFileName(snipboard.TargetPath)}' copied to snipboard");
+						break;
+				};
 				Console.ResetColor();
 			}
 
-			void Cut(string path)
+			Snipboard Cut(string targetPath, SnipOperation operation)
 			{
-				SnipTarget = Path.GetFullPath(path);
+				targetPath = Path.GetFullPath(targetPath);
+				var snipboard = new Snipboard(targetPath, operation);
+				Snipboard.Write(SnipboardLocation, snipboard);
+
+				return snipboard;
 			}
 
-			void Paste(string destinationDirectory = "./", bool clear = true)
+			void Paste(string destinationDirectory = "")
 			{
-				var path = SnipTarget;
-				if (string.IsNullOrEmpty(path))
+				Snipboard snipboard;
+				try
+				{
+					snipboard = Snipboard.Read(SnipboardLocation);
+				}
+				catch
 				{
 					Console.ForegroundColor = ConsoleColor.Red;
-					Console.Error.WriteLine("[ERROR] Clipboard is empty!");
+					Console.Error.WriteLine("[ERROR] Snipboard is empty");
 					Console.ResetColor();
+
+					return;
 				}
-				else
+
+				var destination = Path.Combine(
+					destinationDirectory,
+					Path.GetFileName(snipboard.TargetPath));
+
+				switch (snipboard.Operation)
 				{
-					var destination = Path.Combine(
-						destinationDirectory,
-						Path.GetFileName(path)
-					);
+					case SnipOperation.Cut:
+						FileMacros.Move(snipboard.TargetPath, destination);
+						Console.ForegroundColor = ConsoleColor.Green;
+						Console.WriteLine($"'{Path.GetFileName(snipboard.TargetPath)}' cut from snipboard'");
+						Console.ResetColor();
 
-					var attributes = File.GetAttributes(path);
-					if (attributes.HasFlag(FileAttributes.Directory))
-					{
-						Directory.Move(path, destination);
-					}
-					else
-					{
-						File.Move(path, destination);
-					}
+						File.Delete(SnipboardLocation);
+						break;
+					case SnipOperation.Copy:
+						FileMacros.Copy(snipboard.TargetPath, destination);
 
-					if (clear)
-					{
-						File.Delete(SnipFilePath);
-					}
+						Console.ForegroundColor = ConsoleColor.Green;
+						Console.WriteLine($"'{Path.GetFileName(snipboard.TargetPath)}' copied from snipboard'");
+						Console.ResetColor();
+						break;
 				}
 			}
 		}
